@@ -1,24 +1,32 @@
-// UseMemo.js
-import React, { useState, useMemo } from 'react';
+// ReactMemo.js
+import React, { useState, memo } from 'react';
 
-function UseMemo() {
-  const [inputValue, setInputValue] = useState('');
-
-  const isInputValid = useMemo(() => {
-    return inputValue.length > 5;
-  }, [inputValue]);
+const ReactMemo = memo(({ todos, onCustomTaskSubmit }) => {
+  const [customTask, setCustomTask] = useState('');
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
+    setCustomTask(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (customTask.trim() !== '') {
+      onCustomTaskSubmit(customTask);
+      setCustomTask('');
+    }
   };
 
   return (
     <div>
-      <h3>UseMemo Example</h3>
-      <input type="text" value={inputValue} onChange={handleChange} />
-      {isInputValid ? <p>Input is valid</p> : <p>Input is not valid</p>}
+      <h3>React.memo Example</h3>
+      <input type="text" value={customTask} onChange={handleChange} />
+      <button id="skill-btn" onClick={handleSubmit}>Submit</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+});
 
-export default UseMemo;
+export default ReactMemo;
