@@ -8,7 +8,8 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   const handleAddTodo = () => {
-    setTodos([...todos, 'New todo']);
+    const newTodo = `New todo ${todos.length}`;
+    setTodos([...todos, newTodo]);
   };
 
   const handleIncrement = () => {
@@ -29,7 +30,7 @@ function App() {
       <p>Counter: {counter}</p>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index} id={`todo-${index}`}>{todo}</li>
         ))}
       </ul>
     </div>

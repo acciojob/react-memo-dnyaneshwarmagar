@@ -15,7 +15,7 @@ function UseMemo() {
   return (
     <div>
       <h3>UseMemo Example</h3>
-      <input type="text" value={inputValue} onChange={handleChange} />
+      <input type="text" id="skill-input" value={inputValue} onChange={handleChange} />
       {isInputValid ? <p>Input is valid</p> : <p>Input is not valid</p>}
     </div>
   );
