@@ -8,7 +8,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   const handleAddTodo = () => {
-    const newTodo = `New todo ${todos.length}`;
+    const newTodo = `New todo`;
     setTodos([...todos, newTodo]);
   };
 
@@ -24,7 +24,7 @@ function App() {
     <div id="main" className="App">
       <h2>Task Manager</h2>
       <button id="add-todo-btn" onClick={handleAddTodo}>Add Todo</button>
-      <button id="incr-cnt" onClick={handleIncrement}>Increment</button>
+      <button id="incr-cnt" onClick={handleIncrement}>+</button>
       <UseMemo />
       <ReactMemo todos={todos} onCustomTaskSubmit={handleCustomTaskSubmit} />
       <p>Counter: {counter}</p>
