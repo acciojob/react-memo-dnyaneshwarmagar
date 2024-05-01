@@ -20,10 +20,10 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div id="main" className="App">
       <h2>Task Manager</h2>
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <button onClick={handleIncrement}>Increment</button>
+      <button id="add-todo-btn" onClick={handleAddTodo}>Add Todo</button>
+      <button id="incr-cnt" onClick={handleIncrement}>Increment</button>
       <UseMemo />
       <ReactMemo todos={todos} onCustomTaskSubmit={handleCustomTaskSubmit} />
       <p>Counter: {counter}</p>
