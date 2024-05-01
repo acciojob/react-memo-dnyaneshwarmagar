@@ -1,2 +1,39 @@
-<p>Now I can render any React component on any DOM node I want using ReactDOM.render</p>
+// App.js
+import React, { useState } from 'react';
+import UseMemo from './UseMemo';
+import ReactMemo from './ReactMemo';
 
+function App() {
+  const [counter, setCounter] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const handleAddTodo = () => {
+    setTodos([...todos, 'New todo']);
+  };
+
+  const handleIncrement = () => {
+    setCounter(counter + 1);
+  };
+
+  const handleCustomTaskSubmit = (task) => {
+    setTodos([...todos, task]);
+  };
+
+  return (
+    <div className="App">
+      <h2>Task Manager</h2>
+      <button onClick={handleAddTodo}>Add Todo</button>
+      <button onClick={handleIncrement}>Increment</button>
+      <UseMemo />
+      <ReactMemo todos={todos} onCustomTaskSubmit={handleCustomTaskSubmit} />
+      <p>Counter: {counter}</p>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
