@@ -20,7 +20,7 @@ const ReactMemo = memo(({ todos, onCustomTaskSubmit }) => {
       <h3>React.memo Example</h3>
       <input type="text" value={customTask} onChange={handleChange} />
       <button id="skill-btn" onClick={handleSubmit}>Submit</button>
-      <ul>
+      <ul id="item-jumbotron">
         {todos.map((todo, index) => (
           <li key={index}>{todo}</li>
         ))}
