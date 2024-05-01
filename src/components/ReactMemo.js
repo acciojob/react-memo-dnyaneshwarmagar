@@ -1,32 +1,18 @@
-// ReactMemo.js
-import React, { useState, memo } from 'react';
+import React from 'react';
 
-const ReactMemo = memo(({ skills, handleSkillSubmit }) => {
-  const [skill, setSkill] = useState('');
-
-  const handleChange = (e) => {
-    setSkill(e.target.value);
+const ReactMemo = () => {
+  const Component = ({ data }) => {
+    return <p>Data: {data}</p>;
   };
 
-  const handleSubmit = () => {
-    if (skill.trim() !== '') {
-        handleSkillSubmit(skill);
-        setSkill('');
-    }
-  };
+  const MemoizedComponent = React.memo(Component);
 
   return (
     <div>
-      <h3>React.memo Example</h3>
-      <input type="text" value={skill} onChange={handleChange} />
-      <button id="skill-btn" onClick={handleSubmit}>Submit</button>
-      <ul id="item-jumbotron">
-        {skills.map((skill, index) => (
-          <li key={index}>{skill}</li>
-        ))}
-      </ul>
+      <h2>React.memo Example</h2>
+      <MemoizedComponent data="Memoized Data" />
     </div>
   );
-});
+};
 
 export default ReactMemo;
