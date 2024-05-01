@@ -1,28 +1,28 @@
 // ReactMemo.js
 import React, { useState, memo } from 'react';
 
-const ReactMemo = memo(({ todos, onCustomTaskSubmit }) => {
-  const [customTask, setCustomTask] = useState('');
+const ReactMemo = memo(({ skills, handleSkillSubmit }) => {
+  const [skill, setSkill] = useState('');
 
   const handleChange = (e) => {
-    setCustomTask(e.target.value);
+    setSkill(e.target.value);
   };
 
   const handleSubmit = () => {
-    if (customTask.trim() !== '') {
-      onCustomTaskSubmit(customTask);
-      setCustomTask('');
+    if (skill.trim() !== '') {
+        handleSkillSubmit(skill);
+        setSkill('');
     }
   };
 
   return (
     <div>
       <h3>React.memo Example</h3>
-      <input type="text" value={customTask} onChange={handleChange} />
+      <input type="text" value={skill} onChange={handleChange} />
       <button id="skill-btn" onClick={handleSubmit}>Submit</button>
       <ul id="item-jumbotron">
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+        {skills.map((skill, index) => (
+          <li key={index}>{skill}</li>
         ))}
       </ul>
     </div>
